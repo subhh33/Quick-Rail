@@ -1,271 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>My Website</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>RailQuick Essentials - Quick Service on Rail</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
 </head>
-<!-- #hhd.664o987 -->
-<body>
-  <!-- Header -->
-  <section id="header">
-    <div class="header container">
-      <div class="nav-bar">
-        <div class="brand">
-          <a href="#hero">
-            <h1><span>S</span>ubhash<span> K</span>umar</h1>
-          </a>
-        </div>
-        <div class="nav-list">
-          <div class="hamburger">
-            <div class="bar"></div>
-          </div>
-          <ul>
-            <li><a href="#hero" data-after="Home">Home</a></li>
-            <li><a href="#services" data-after="Service">Services</a></li>
-            <li><a href="#projects" data-after="Projects">Skills</a></li>
-            <li><a href="#about" data-after="About">About</a></li>
-            <li><a href="#contact" data-after="Contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Header -->
+<body class="min-h-screen">
 
+    <!-- Header (Always Visible) - IR Branding -->
+    <header class="bg-white shadow-lg sticky top-0 z-10 border-b-4 border-indigo-700">
+        <div class="max-w-7xl mx-auto p-4 flex flex-col sm:flex-row justify-between items-center">
+            
+            <div class="flex justify-between items-center w-full sm:w-auto mb-2 sm:mb-0">
+                <!-- Branding: Deep Blue for RailQuick -->
+                <h1 class="text-3xl font-extrabold text-indigo-800 tracking-wider">
+                    <span class="text-red-600">🚆</span> RAILQUICK
+                </h1>
+            </div>
 
-  <!-- Hero Section  -->
-  <section id="hero">
-    <div class="hero container">
-      <div>
-        <h1>Hello, <span></span></h1>
-        <h1>I AM <span></span></h1>
-        <h1>S.K <span></span></h1>
-        <a href="#projects" type="button" class="cta">SKILLS</a>
-      </div>
-    </div>
-  </section>
-  <!-- End Hero Section  -->
+            <!-- Dynamic Location Display (Visible only in App View) -->
+            <div id="appHeaderLocation" class="hidden items-center space-x-2 bg-indigo-50 p-2 rounded-xl border border-indigo-200 w-full sm:w-auto cursor-pointer group hover:bg-indigo-100" onclick="showView('home')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600 group-hover:text-indigo-800" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                <span id="currentLocationDisplay" class="bg-indigo-50 text-indigo-800 focus:outline-none w-full text-sm font-semibold group-hover:underline">Varanasi JN, PF 2, Pin Point C</span>
+            </div>
 
-  <!-- Service Section -->
-  <section id="services">
-    <div class="services container">
-      <div class="service-top">
-        <h1 class="section-title"><span>S</span>ervices</h1>
-        <p>--------------------------------------</p>
-      </div>
-      <div class="service-bottom">
-        <!-- box 1 by sk -->
-        <div class="service-item">
-          <div class="icon"><img src="./img/www-icon_23-2147934051.png" /></div>
-          <h2>Web Design</h2>
-          <p>SPACE FOR TEXT</p>
+            <!-- Cart Button for mobile (Red for urgency) - Click handler added in JS -->
+            <button id="mobileCartButton" class="sm:hidden fixed bottom-6 right-6 bg-red-600 text-white p-4 rounded-full shadow-2xl z-20 transition duration-300 hover:bg-red-700 transform scale-105" onclick="checkout()">
+                <div class="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span id="cartCountMobile" class="absolute -top-1 -right-1 bg-yellow-400 text-xs text-indigo-900 rounded-full h-5 w-5 flex items-center justify-center font-bold shadow-md">0</span>
+                </div>
+            </button>
         </div>
-        <!-- box 2 by sk -->
-        <div class="service-item">
-          <div class="icon"><img src="./img/AnimClubLogo-White 2.png" /></div>
-          <h2>ANIMATION</h2>
-          <p>SPACE FOR TEXT</p>
-        </div>
-<!-- Box 3 by sk-->
-        <div class="service-item">
-          <div class="icon"><img src="./img/box33.png" /></div>
-          <h2>BASIC VFX</h2>
-          <p>SPACE FOR TEXT</p>
-        </div>
-<!-- Box 4 by sk-->
-        <div class="service-item">
-          <div class="icon"><img src="./img/box3.png" /></div>
-          <h2>VIDEO EDITING</h2>
-          <p>SPACE FOR TEXT</p>
-        </div>
-        <!-- Box 5 by sk-->
-        <div class="service-item">
-          <div class="icon"><img src="./img/box4.png" /></div>
-          <h2>APP DEVELOPMENT </h2>
-          <p>SPACE FOR TEXT</p>
-        </div>
-        <!-- Box 6 by sk-->
-        <div class="service-item">
-          <div class="icon"><img src="./img/box6.png" /></div>
-          <h2>EDUCATION</h2>
-          <p>SPACE FOR TEXT</p>
-        </div>
-      </div>
-    </div>
+    </header>
 
-  </section>
-  <!-- End Service Section -->
+    <!-- HOME/LOCATION SELECTION VIEW (Responsive for Mobile/Tablet) -->
+    <div id="homeView" class="view-transition max-w-lg mx-auto p-4 flex flex-col items-center justify-center min-h-[calc(100vh-80px)]">
+        <h2 class="text-3xl font-extrabold text-indigo-900 mb-8 text-center bg-white p-3 rounded-xl shadow-lg w-full">
+            <span class="text-red-600">✓</span> QUICK SERVICE DELIVERY
+        </h2>
 
-  <!-- skills section -->
-  <section id="projects">
-    <div class="projects container">
-      <div class="projects-header">
-        <h1 class="section-title">MY <span>SKILLS</span></h1>
-      </div>
-      <div class="all-projects">
-        <div class="project-item">
-          <div class="project-info">
-              <h1> <span> CODE / LANGUAGE </span> </h1>
-            <h2>Coding iz Love</h2>
-            <p>  Python</p>
-              <p>C</p>
-              <p>C++</p>
-              <p>DSA</p>
+        <div class="w-full space-y-5">
+            <button onclick="toggleLocationForm('train')" class="w-full flex items-center justify-center p-5 bg-indigo-700 text-white text-xl font-bold rounded-xl shadow-xl hover:bg-indigo-800 transition duration-200 transform hover:scale-[1.01]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                I AM ON A TRAIN (PNR)
+            </button>
 
-</p>
-          </div>
-          <div class="project-img">
-            <img src="./img/code.jpeg" alt="img">
-          </div>
+            <button onclick="toggleLocationForm('platform')" class="w-full flex items-center justify-center p-5 bg-indigo-700 text-white text-xl font-bold rounded-xl shadow-xl hover:bg-indigo-800 transition duration-200 transform hover:scale-[1.01]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                I AM ON THE PLATFORM
+            </button>
         </div>
-        <div class="project-item">
-          <div class="project-info">
-            <h1><span>WEB DEVELOPMENT</span></h1>
 
-            <h2>Web-D iz Love</h2>
-            <p> Html</p>
-            <p>Css</p>
-            <p>Bootstrap</p>
-
-
-
-          </div>
-          <div class="project-img">
-            <img src="./img/SS.jpeg" alt="img">
-          </div>
+        <!-- Train Form -->
+        <div id="trainForm" class="hidden w-full mt-8 p-6 bg-white rounded-xl shadow-2xl border border-gray-200 space-y-4">
+            <h3 class="text-xl font-semibold text-indigo-700">Train Seat Delivery (PNR)</h3>
+            <input type="text" id="trainNoInput" placeholder="Enter Train Number" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500" value="12137">
+            <input type="text" id="pnrInput" placeholder="Enter PNR Number" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500" value="1234567890">
+            <button onclick="submitLocation('train')" class="w-full p-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition duration-200 shadow-md shadow-red-300">
+                Find My Seat & Start Shopping
+            </button>
         </div>
-        <div class="project-item">
-          <div class="project-info">
-            <h1><span>2D-3D ANIMATION</span></h1>
-            <h2>Animation iz Love</h2>
-            <p>Blender</p>
-            <P>After Effects</p>
-          </div>
-          <div class="project-img">
-            <img src="./img/city.jpeg" alt="img">
-          </div>
-        </div>
-        <div class="project-item">
-          <div class="project-info">
-            <h1><span>VIDEO-PHOTO EDITING</span></h1>
-            <h2>Editing iz Love</h2>
-            <p>Premier Pro
 
-            </P>
-              <p>Canva</p>
-              <p>Final cut Pro</p>
-              <p>Photoshop</p>
-
-          </div>
-          <div class="project-img">
-            <img src="https://t4.ftcdn.net/jpg/03/46/15/61/240_F_346156119_IzQY2GnQXsuwimmpxv7sRRdqmiworJ60.jpg" alt="img">
-          </div>
+        <!-- Platform Form -->
+        <div id="platformForm" class="hidden w-full mt-8 p-6 bg-white rounded-xl shadow-2xl border border-gray-200 space-y-4">
+            <h3 class="text-xl font-semibold text-indigo-700">Platform Pin Point Delivery</h3>
+            
+            <select id="stationSelect" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                <option value="Varanasi JN">Varanasi JN (BSB)</option>
+                <option value="New Delhi">New Delhi (NDLS)</option>
+                <option value="Mumbai CSMT">Mumbai CSMT (CSMT)</option>
+            </select>
+            
+            <select id="platformNoInput" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                <option value="" disabled>Select Platform Number</option>
+                <option value="1">Platform 1</option>
+                <option value="2" selected>Platform 2</option>
+                <option value="3">Platform 3</option>
+                <option value="4">Platform 4</option>
+                <option value="5">Platform 5</option>
+                <option value="6">Platform 6</option>
+                <option value="7">Platform 7</option>
+                <option value="8">Platform 8</option>
+                <option value="9">Platform 9</option>
+                <option value="10">Platform 10</option>
+            </select>
+            
+            <select id="pinPointInput" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                <option value="" disabled>Select Pin Point Location</option>
+                <option value="A">Pin Point A</option>
+                <option value="B">Pin Point B</option>
+                <option value="C" selected>Pin Point C</option>
+                <option value="D">Pin Point D</option>
+                <option value="E">Pin Point E</option>
+                <option value="F">Pin Point F</option>
+                <option value="G">Pin Point G</option>
+                <option value="H">Pin Point H</option>
+                <option value="I">Pin Point I</option>
+                <option value="J">Pin Point J</option>
+                <option value="K">Pin Point K</option>
+                <option value="L">Pin Point L</option>
+                <option value="M">Pin Point M</option>
+                <option value="N">Pin Point N</option>
+            </select>
+            
+            <button onclick="submitLocation('platform')" class="w-full p-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition duration-200 shadow-md shadow-red-300">
+                Start Shopping
+            </button>
         </div>
-        <div class="project-item">
-          <div class="project-info">
-            <h1><span>BASIC VISUAL EFFECTS</span></h1>
-            <h2>Vfx iz Love</h2>
-            <p>After Effect</p>
 
-          </div>
-          <div class="project-img">
-            <img  src="https://images.pexels.com/photos/9695087/pexels-photo-9695087.jpeg?auto=compress&cs=tinysrgb&w=800" alt="img">
-          </div>
-        </div>
-      </div>
     </div>
 
+    <!-- MAIN CONTENT AREA (APP VIEW) -->
+    <div id="appView" class="view-transition hidden max-w-7xl mx-auto flex flex-col lg:flex-row p-4">
+        
+        <!-- Left Column: Category Navigation & Products -->
+        <main class="flex-1 w-full lg:w-3/4 order-2 lg:order-1">
 
+            <div id="categoryNav" class="category-scroll-container flex space-x-4 p-2 mb-6 overflow-x-auto whitespace-nowrap bg-white rounded-xl shadow-md border border-gray-100">
+                <!-- Categories injected by JS -->
+            </div>
+            
+            <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="productGrid">
+                <!-- Products injected by JS -->
+            </section>
+        </main>
+        
+        <!-- Right Column: Cart Summary -->
+        <aside class="w-full lg:w-1/4 lg:pl-6 sticky top-24 lg:h-[calc(100vh-100px)] order-1 lg:order-2 mb-6 lg:mb-0">
+            <div id="mobileCartSummary" class="bg-white p-4 rounded-xl shadow-lg lg:hidden mb-4">
+                <h3 class="text-xl font-extrabold text-indigo-800 mb-2">Cart Details</h3>
+                <div class="flex justify-between items-center text-lg font-bold text-red-600 border-b pb-2 mb-2">
+                    <span>Total Items:</span>
+                    <span id="cartCountMobileSummary">0</span>
+                </div>
+                <div class="flex justify-between items-center text-2xl font-extrabold text-red-600">
+                    <span>TOTAL:</span>
+                    <span id="cartTotalMobile">₹15.00</span>
+                </div>
+            </div>
 
+            <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-red-600 hidden lg:block">
+                <h2 class="text-xl font-extrabold text-indigo-800 mb-4 flex items-center justify-between">
+                    Your Order Summary
+                    <span id="cartCountDesktop" class="bg-indigo-100 text-indigo-600 text-sm font-semibold px-2 py-1 rounded-full">0 items</span>
+                </h2>
+                
+                <div id="cartItemsList" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                    <p class="text-gray-500 text-sm text-center py-4" id="emptyCartMessage">Your cart is empty. Add essentials!</p>
+                </div>
+                
+                <div class="border-t pt-4 space-y-2">
+                    <div class="flex justify-between font-bold text-gray-700">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">₹0.00</span>
+                    </div>
 
-  </section>
-  <!-- End Projects Section -->
+                    <div class="pt-2">
+                        <h3 class="text-sm font-bold text-indigo-800 mb-1">Coupon Code</h3>
+                        <div class="flex space-x-2">
+                            <input type="text" id="couponInput" placeholder="Enter Code" class="flex-1 p-2 border border-gray-300 rounded-lg text-sm uppercase focus:ring-indigo-500 focus:border-indigo-500">
+                            <button onclick="applyCoupon()" class="bg-indigo-600 text-white text-sm font-semibold px-3 py-2 rounded-lg hover:bg-indigo-700 transition duration-200">
+                                Apply
+                            </button>
+                        </div>
+                        <p id="couponMessage" class="text-xs text-red-500 mt-1 h-3"></p>
+                    </div>
+                    
+                    <div id="discountRow" class="hidden flex justify-between text-base font-bold text-green-600 border-t pt-2">
+                        <span>Discount (<span id="discountCodeDisplay"></span>):</span>
+                        <span id="discountAmountDisplay">-₹0.00</span>
+                    </div>
 
-  <!-- About Section -->
-  <section id="about">
-    <div class="about container">
-      <div class="col-left">
-        <div class="about-img">
-          <img src="./img/IMG_2503.JPG" alt="img">
-        </div>
-      </div>
-      <div class="col-right">
-        <h1 class="section-title">About <span>me</span></h1>
-        <h2>Front End Developer</h2>
-        <p>Hello! I am Subhash Kumar, a second year student of IIT BHU Varanasi. </p>
-        <a href="https://drive.google.com/file/d/11PRC7JJUO9Qv6Ay8RbC520v2YKjM6_jS/view?usp=sharing" class="cta">Download Resume</a>
-      </div>
+                    <div class="flex justify-between text-sm text-gray-500 border-b pb-2">
+                        <span>Delivery Fee:</span>
+                        <span class="font-semibold text-red-600" id="deliveryFeeDisplay">₹15.00</span>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t space-y-3">
+                        <h3 class="text-sm font-bold text-indigo-800">Payment Method</h3>
+                        <div class="flex flex-col space-y-2">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="payment" value="Online" id="paymentOnline" class="form-radio text-indigo-600 h-4 w-4" checked>
+                                <span class="ml-2 text-sm text-gray-700">Online Payment (UPI/Card)</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="payment" value="COD" id="paymentCOD" class="form-radio text-indigo-600 h-4 w-4">
+                                <span class="ml-2 text-sm text-gray-700 font-bold">Cash on Delivery</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between text-2xl font-extrabold text-red-600 pt-2">
+                        <span>TOTAL:</span>
+                        <span id="cartTotalDesktop">₹15.00</span>
+                    </div>
+                </div>
+
+                <button id="checkoutButtonDesktop" class="mt-6 w-full bg-red-600 text-white font-semibold py-3 rounded-xl hover:bg-red-700 transition duration-200 shadow-xl shadow-red-400 transform hover:scale-[1.01]" onclick="checkout()">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </aside>
+
     </div>
-  </section>
-  <!-- End About Section -->
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="contact container">
-      <div>
-        <h1 class="section-title">Contact <span>info</span></h1>
-      </div>
-      <div class="contact-items">
-        <div class="contact-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
-          <div class="contact-info">
-            <h1>Phone</h1>
-            <h2>+91 XX25394717</h2>
-            <h2>+91 6201060XX9</h2>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
-          <div class="contact-info">
-            <h1>Email</h1>
-            <h2>iwannabackmylife@icloud.com</h2>
-            <h2>iwannabackmylife@outlook.com</h2>
-          </div>
-        </div>
-        <div class="contact-item">
-
-          <div class="contact-info">
-            <a href="https://www.google.com/maps/place/Indian+Institute+of+Technology+(BHU)+Varanasi/@25.2623173,82.9871238,17z/data=!4m12!1m6!3m5!1s0x398e33ef9b1f7cdd:0x7555db6d623dc140!2sIndian+Institute+of+Technology+(BHU)+Varanasi!8m2!3d25.2623125!4d82.9893125!3m4!1s0x398e33ef9b1f7cdd:0x7555db6d623dc140!8m2!3d25.2623125!4d82.9893125"><div class="icon">
-
-              <img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div></a>
-            <h1>Address</h1>
-            <h2>DG-2, IIT BHU, VARANASI</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Contact Section -->
-
-  <!-- Footer -->
-  <section id="footer">
-    <div class="footer container">
-      <div class="brand">
-        <h1><span>S</span>ubhash<span> K</span>umar</h1>
-      </div>
-      <h2>Your Complete Web Solution</h2>
-      <div class="social-icon">
-        <div class="social-item">
-          <a href="https://www.linkedin.com/in/subhash-kumar-4641a9229/"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" /></a>
-        </div>
-        <div class="social-item">
-          <a href="https://instagram.com/subh__33?igshid=NzNkNDdiOGI="><img src="https://d3iqwsql9z4qvn.cloudfront.net/wp-content/uploads/sites/2/2018/07/27173515/instagram-colourful-icon.png" /></a>
-        </div>
-        <div class="social-item">
-          <a href="https://twitter.com/ssubh33"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" /></a>
-        </div>
-        <div class="social-item">
-          <a href="https://github.com/subhh33"><img src="https://cdn4.iconfinder.com/data/icons/bettericons/354/github-circle-512.png" /></a>
-        </div>
-      </div>
-      <p>Copyright © 2022 SK. All rights reserved</p>
-    </div>
-  </section>
-  <!-- End Footer -->
-  <script src="./app.js"></script>
+    <!-- External JS -->
+    <script src="script.js"></script>
 </body>
-
 </html>
